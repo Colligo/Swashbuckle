@@ -70,7 +70,8 @@ namespace Swashbuckle.Swagger
                 var schemaInfo = typeMapping.Value;
 
                 schemaInfo.Schema = CreateDefinitionSchema(typeMapping.Key);
-                Definitions.Add(schemaInfo.SchemaId, schemaInfo.Schema);
+                if (!Definitions.ContainsKey(schemaInfo.SchemaId))
+                    Definitions.Add(schemaInfo.SchemaId, schemaInfo.Schema);
             }
 
             return schema;
